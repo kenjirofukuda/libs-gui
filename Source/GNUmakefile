@@ -179,6 +179,7 @@ NSStoryboardSegue.m \
 NSMagnificationGestureRecognizer.m \
 NSMatrix.m \
 NSMenu.m \
+NSMenu+Me.m \
 NSMenuView.m \
 NSMenuItem.m \
 NSMenuItemCell.m \
@@ -478,6 +479,7 @@ NSMagnificationGestureRecognizer.h \
 NSMatrix.h \
 NSMediaLibraryBrowserController.h \
 NSMenu.h \
+NSMenu+Me.h \
 NSMenuItem.h \
 NSMenuItemCell.h \
 NSMenuView.h \

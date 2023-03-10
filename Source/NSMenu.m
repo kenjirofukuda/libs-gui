@@ -55,6 +55,7 @@
 #import "AppKit/NSFont.h"
 #import "AppKit/NSImage.h"
 #import "AppKit/NSMenu.h"
+#import "AppKit/NSMenu+Me.h"
 #import "AppKit/NSMenuItem.h"
 #import "AppKit/NSMenuView.h"
 #import "AppKit/NSPanel.h"
@@ -513,8 +514,7 @@ static BOOL menuBarVisible = YES;
           origin = NSMakePoint(0, [[_aWindow screen] visibleFrame].size.height 
                                - [_aWindow frame].size.height);
 
-	  origin.x += 50;
-	  origin.y -= 50;
+          origin = KFFixMainMenuInitialOrigin(origin);
 	  
           [_aWindow setFrameOrigin: origin];
           [_bWindow setFrameOrigin: origin];
