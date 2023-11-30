@@ -2,7 +2,7 @@
 
    <abstract>The theme methods for drawing controls</abstract>
 
-   Copyright (C) 2004-2010 Free Software Foundation, Inc.
+   Copyright (C) 2004-2023 Free Software Foundation, Inc.
 
    Author: Adam Fedor <fedor@gnu.org>
    Date: Jan 2004
@@ -676,6 +676,45 @@
   return color;
 }
 
+- (NSColor *) badgeBackgroundColor
+{
+  NSColor *color;
+
+  color = [self colorNamed: @"badgeColor"
+                state: GSThemeNormalState];
+  if (color == nil)
+    {
+      color = [NSColor redColor];
+    }
+  return color;
+}
+
+- (NSColor *) badgeDecorationColor
+{
+  NSColor *color;
+
+  color = [self colorNamed: @"badgeColor"
+                state: GSThemeSelectedState];
+  if (color == nil)
+    {
+      color = [NSColor lightGrayColor];
+    }
+  return color;
+}
+
+- (NSColor *) badgeTextColor
+{
+  NSColor *color;
+
+  color = [self colorNamed: @"badgeColor"
+                state: GSThemeHighlightedState];
+  if (color == nil)
+    {
+      color = [NSColor whiteColor];
+    }
+  return color;
+}
+
 - (void) drawToolbarRect: (NSRect)aRect
                    frame: (NSRect)viewFrame
               borderMask: (unsigned int)borderMask
@@ -928,12 +967,11 @@
   // fill oval with background color
   [backgroundColor set];
   [oval fill];
-  
+
   // and stroke rounded button
   [[NSColor shadowColor] set];
   [oval stroke];
 }
-
 
 - (void) drawSwitchInRect: (NSRect)rect
                  forState: (NSControlStateValue)state
@@ -2032,6 +2070,38 @@ static NSDictionary *titleTextAttributes[3] = {nil, nil, nil};
 	  PSstroke();
 	}
     }
+}
+
+- (void) setFrameForCloseButton: (NSButton *)closeButton
+		       viewSize: (NSSize)viewSize
+{
+  NSSize buttonSize = [[closeButton image] size];
+  buttonSize = NSMakeSize(buttonSize.width + 3, buttonSize.height + 3);
+  
+  [closeButton setFrame: NSMakeRect(viewSize.width - buttonSize.width - 4,
+                   		   (viewSize.height - buttonSize.height) / 2,
+  		                    buttonSize.width, 
+				    buttonSize.height)];
+}
+
+- (NSRect) closeButtonFrameForBounds: (NSRect)bounds
+{
+  GSTheme *theme = [GSTheme theme];
+
+  return NSMakeRect(bounds.size.width - [theme titlebarButtonSize] - 
+				   [theme titlebarPaddingRight], bounds.size.height - 
+				   [theme titlebarButtonSize] - [theme titlebarPaddingTop], 
+				   [theme titlebarButtonSize], [theme titlebarButtonSize]);
+}
+
+- (NSRect) miniaturizeButtonFrameForBounds: (NSRect)bounds
+{
+  GSTheme *theme = [GSTheme theme];
+
+  return NSMakeRect([theme titlebarPaddingLeft], 
+		    bounds.size.height - [theme titlebarButtonSize] - [theme titlebarPaddingTop], 
+		    [theme titlebarButtonSize],
+		    [theme titlebarButtonSize]);
 }
 
 - (NSColor *) browserHeaderTextColor

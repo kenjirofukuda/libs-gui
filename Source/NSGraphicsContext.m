@@ -359,7 +359,7 @@ NSGraphicsContext	*GSCurrentContext(void)
 
 
 - (id) initWithGraphicsPort: (void *)port 
-                    flipped: (BOOL)flag;
+                    flipped: (BOOL)flag
 {
   self = [self init];
   if (self != nil)
@@ -373,6 +373,11 @@ NSGraphicsContext	*GSCurrentContext(void)
 - (NSDictionary *) attributes
 {
   return context_info;
+}
+
+- (const gsMethodTable *) methods
+{
+  return methods;
 }
 
 - (void) flushGraphics
@@ -596,7 +601,7 @@ NSGraphicsContext	*GSCurrentContext(void)
     GET_IMP(@selector(GSShowText::));
   methodTable.GSShowGlyphs__ =
     GET_IMP(@selector(GSShowGlyphs::));
-  methodTable.GSShowGlyphsWithAdvances__ =
+  methodTable.GSShowGlyphsWithAdvances___ =
     GET_IMP(@selector(GSShowGlyphsWithAdvances:::));
 
 /* ----------------------------------------------------------------------- */
@@ -722,7 +727,7 @@ NSGraphicsContext	*GSCurrentContext(void)
     GET_IMP(@selector(DPSrmoveto::));
   methodTable.DPSstroke =
     GET_IMP(@selector(DPSstroke));
-  methodTable.DPSshfill =
+  methodTable.DPSshfill_ =
     GET_IMP(@selector(DPSshfill:));
 
   methodTable.GSSendBezierPath_ =

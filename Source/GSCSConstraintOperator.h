@@ -20,27 +20,15 @@
    Boston, MA 02110 USA.
 */
 
-#import <Foundation/Foundation.h>
-#import "GSCSConstraint.h"
-#import "GSCSSolution.h"
+#ifndef GSCSConstraintOperator_h
+#define GSCSConstraintOperator_h
 
-#ifndef _GS_CASSOWARY_SOLVER_H
-#define _GS_CASSOWARY_SOLVER_H
+enum GSCSConstraintOperator
+{
+    GSCSConstraintOperatorEqual,
+    GSCSConstraintOperationGreaterThanOrEqual,
+    GSCSConstraintOperatorLessThanOrEqual,
+};
+typedef enum GSCSConstraintOperator GSCSConstraintOperator;
 
-@interface GSCassowarySolver : NSObject
-
-- (void) addConstraint: (GSCSConstraint*)constraint;
-
-- (void) addConstraints: (NSArray*)constraints;
-
-- (void) removeConstraint: (GSCSConstraint*)constraint;
-
-- (void) removeConstraints: (NSArray*)constraints;
-
-- (void) suggestEditVariable: (GSCSVariable*)variable equals: (CGFloat)value;
-
-- (GSCSSolution*) solve;
-
-@end
-
-#endif
+#endif /* GSCSConstraintOperator_h */

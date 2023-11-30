@@ -1,19 +1,19 @@
 /* Copyright (C) 2023 Free Software Foundation, Inc.
-   
+
    By: Benjamin Johnson
    Date: 19-3-2023
    This file is part of the GNUstep Library.
-   
+
    This library is free software; you can redistribute it and/or
    modify it under the terms of the GNU Lesser General Public
    License as published by the Free Software Foundation; either
    version 2.1 of the License, or (at your option) any later version.
-   
+
    This library is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY; without even the implied warranty of
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
    Lesser General Public License for more details.
-   
+
    You should have received a copy of the GNU Lesser General Public
    License along with this library; if not, write to the Free
    Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
@@ -21,25 +21,31 @@
 */
 
 #import <Foundation/Foundation.h>
-#import "GSCSConstraint.h"
-#import "GSCSSolution.h"
 
-#ifndef _GS_CASSOWARY_SOLVER_H
-#define _GS_CASSOWARY_SOLVER_H
+#ifndef _GS_CS_STRENGTH_H
+#define _GS_CS_STRENGTH_H
 
-@interface GSCassowarySolver : NSObject
+@interface GSCSStrength : NSObject <NSCopying>
+{
+  NSString *_name;
+  double _strength;
+}
 
-- (void) addConstraint: (GSCSConstraint*)constraint;
+- (NSString *) name;
 
-- (void) addConstraints: (NSArray*)constraints;
+- (double) strength;
 
-- (void) removeConstraint: (GSCSConstraint*)constraint;
+- (instancetype) initWithName: (NSString *)name strength: (double)strength;
 
-- (void) removeConstraints: (NSArray*)constraints;
++ (instancetype) strengthRequired;
 
-- (void) suggestEditVariable: (GSCSVariable*)variable equals: (CGFloat)value;
++ (instancetype) strengthStrong;
 
-- (GSCSSolution*) solve;
++ (instancetype) strengthMedium;
+
++ (instancetype) strengthWeak;
+
+- (BOOL) isRequired;
 
 @end
 
