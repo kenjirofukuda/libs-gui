@@ -1448,9 +1448,9 @@ static BOOL menuBarVisible = YES;
   [menu _rightMouseDisplay: event];
 }
 
-- (void) popUpMenuPositionItem: (NSMenuItem *)item
-                    atLocation: (NSPoint) point
-                        inView: (NSView *) view
+- (void) popUpMenuPositioningItem: (NSMenuItem *)item
+                       atLocation: (NSPoint) point
+                           inView: (NSView *) view
 {
   NSRect cellFrame = [view convertRect: [view bounds] toView: nil];
   NSWindow *w = [view window];
@@ -1466,6 +1466,15 @@ static BOOL menuBarVisible = YES;
                   controlViewWindow: w
                       preferredEdge: NSMinYEdge
                        selectedItem: selectedItem];
+}
+
+- (void) popUpMenuPositionItem: (NSMenuItem *)item
+                    atLocation: (NSPoint) point
+                        inView: (NSView *) view
+{
+  [self popUpMenuPositioningItem: item 
+                      atLocation: point 
+                          inView: view];
 }
 
 /*
