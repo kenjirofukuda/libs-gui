@@ -181,6 +181,7 @@ NSMagnificationGestureRecognizer.m \
 NSMatrix.m \
 NSMenu.m \
 NSMenu+Me.m \
+NSMenuToolbarItem.m \
 NSMenuView.m \
 NSMenuItem.m \
 NSMenuItemCell.m \
@@ -262,10 +263,13 @@ NSStatusItem.m \
 NSTabView.m \
 NSTabViewController.m \
 NSTabViewItem.m \
+NSTableCellView.m \
 NSTableColumn.m \
 NSTableHeaderView.m \
 NSTableHeaderCell.m \
 NSTableView.m \
+NSTableViewRowAction.m \
+NSTableRowView.m \
 NSText.m \
 NSTextAlternatives.m \
 NSTextAttachment.m \
@@ -301,6 +305,7 @@ NSWindowController.m \
 NSWorkspace.m \
 GSAnimator.m \
 GSAutocompleteWindow.m \
+GSControllerTreeProxy.m \
 GSDisplayServer.m \
 GSHelpManagerPanel.m \
 GSInfoPanel.m \
@@ -495,6 +500,7 @@ NSMenu.h \
 NSMenu+Me.h \
 NSMenuItem.h \
 NSMenuItemCell.h \
+NSMenuToolbarItem.h \
 NSMenuView.h \
 NSMovie.h \
 NSMovieView.h \
@@ -582,10 +588,13 @@ NSSwitch.h \
 NSTabView.h \
 NSTabViewController.h \
 NSTabViewItem.h \
+NSTableCellView.h \
 NSTableColumn.h \
 NSTableHeaderCell.h \
 NSTableHeaderView.h \
 NSTableView.h \
+NSTableViewRowAction.h \
+NSTableRowView.h \
 NSText.h \
 NSTextAlternatives.h \
 NSTextAttachment.h \

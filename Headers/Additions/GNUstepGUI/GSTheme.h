@@ -249,10 +249,13 @@
 @class NSColorWell;
 @class NSImage;
 @class NSMenuItemCell;
+@class NSOutlineView;
 @class NSPopUpButtonCell;
 @class NSMenuView;
 @class NSProgressIndicator;
+@class NSTableColumn;
 @class NSTableHeaderCell;
+@class NSTableView;
 @class NSTabViewItem;
 @class NSPathControl;
 @class NSPathComponentCell;
@@ -1337,7 +1340,17 @@ APPKIT_EXPORT_CLASS
 
 - (void) drawTableViewRow: (NSInteger)rowIndex 
 		 clipRect: (NSRect)clipRect
-		   inView: (NSView *)view;
+		   inView: (NSTableView *)view;
+
+- (NSRect) drawOutlineCell: (NSTableColumn *)tb
+	       outlineView: (NSOutlineView *)outlineView
+		      item: (id)item
+	       drawingRect: (NSRect)inputRect
+                  rowIndex: (NSInteger)rowIndex;
+
+- (void) drawOutlineViewRow: (NSInteger)rowIndex 
+                   clipRect: (NSRect)clipRect
+		     inView: (NSOutlineView *)view;
 
 - (BOOL) isBoxOpaque: (NSBox *)box;
 

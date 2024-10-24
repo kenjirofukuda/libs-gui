@@ -7,11 +7,7 @@ MISSING HEADERS ( * = difficult, - = quick, + = placeholder, x = won't do )
 > NSFilePromiseProvider.h -
 > NSFilePromiseReceiver.h -
 > NSItemProvider.h + 
-> NSMenuToolbarItem.h -
 > NSOpenGLLayer.h +
-> NSTableCellView.h *
-> NSTableRowView.h *
-> NSTableViewRowAction.h *
 > NSTypesetter.h +
 > NSUserActivity.h -
 > NSWindowTab.h +

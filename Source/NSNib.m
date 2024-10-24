@@ -39,8 +39,8 @@
 */
 
 #import "config.h"
-#import <Foundation/NSArray.h>
 #import <Foundation/NSArchiver.h>
+#import <Foundation/NSArray.h>
 #import <Foundation/NSBundle.h>
 #import <Foundation/NSData.h>
 #import <Foundation/NSDebug.h>
@@ -209,7 +209,7 @@
   // add the necessary things to the table...
   [externalNameTable setObject: owner forKey: NSNibOwner];
 
-  if (topLevelObjects != 0)
+  if (topLevelObjects != NULL)
     {
       *topLevelObjects = [NSMutableArray array];
       [externalNameTable setObject: *topLevelObjects
