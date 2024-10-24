@@ -67,3 +67,4 @@ DerivedData/
 compile_commands.json
 **/.cache
 **/.vscode
+**/.ccls-cache
