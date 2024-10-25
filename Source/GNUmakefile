@@ -180,7 +180,6 @@ NSStoryboardSegue.m \
 NSMagnificationGestureRecognizer.m \
 NSMatrix.m \
 NSMenu.m \
-NSMenu+Me.m \
 NSMenuToolbarItem.m \
 NSMenuView.m \
 NSMenuItem.m \
@@ -385,6 +384,8 @@ ifneq ($(FOUNDATION_LIB), fd)
 libgnustep-gui_OBJC_FILES += NSPasteboard.m
 endif
 
+libgnustep-gui_OBJC_FILES += NSMenu+Me.m
+
 libgnustep-gui_HEADER_FILES_DIR = ../Headers/Additions/GNUstepGUI
 libgnustep-gui_HEADER_FILES_INSTALL_DIR = /GNUstepGUI
 
@@ -497,7 +498,6 @@ NSMagnificationGestureRecognizer.h \
 NSMatrix.h \
 NSMediaLibraryBrowserController.h \
 NSMenu.h \
-NSMenu+Me.h \
 NSMenuItem.h \
 NSMenuItemCell.h \
 NSMenuToolbarItem.h \
@@ -695,6 +695,8 @@ GSXibElement.h \
 GSXibLoading.h \
 GSXibKeyedUnarchiver.h \
 GSHelpAttachment.h
+
+APPKIT_HEADERS += NSMenu+Me.h
 
 libgnustep-gui_HEADER_FILES = ${GUI_HEADERS}
 
