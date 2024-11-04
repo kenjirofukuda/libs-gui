@@ -1,0 +1,25 @@
+From ae8e48591d61290ed72e73f3e7240f4f0ec4551f Mon Sep 17 00:00:00 2001
+From: Kenjiro Fukuda <kenjirofukuda@gmail.com>
+Date: Mon, 6 Mar 2023 22:04:27 +0900
+Subject: [PATCH] NSView __strong **_jail; for -fobjc-arc
+
+---
+ Headers/Additions/GNUstepGUI/GSTable.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Headers/Additions/GNUstepGUI/GSTable.h b/Headers/Additions/GNUstepGUI/GSTable.h
+index 0c0377ff..3f03379d 100644
+--- a/Headers/Additions/GNUstepGUI/GSTable.h
++++ b/Headers/Additions/GNUstepGUI/GSTable.h
+@@ -185,7 +185,7 @@
+   // Each prisoner is enclosed in a jail (which is a subview under 
+   // our control). 
+   // Each prisoner is allowed to resize only inside its jail.   
+-  NSView **_jails;
++  NSView __strong **_jails;
+   // YES if the column/row should be expanded/reduced when the size 
+   // of the GSTable is expanded/reduced (this BOOL is otherwhere 
+   // called X/Y Resizing Enabled). 
+-- 
+2.34.1
+

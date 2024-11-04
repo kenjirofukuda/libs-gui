@@ -1,0 +1,50 @@
+From 554d172f2b31a26302627a7433f43cf74aba3f12 Mon Sep 17 00:00:00 2001
+From: Kenjiro Fukuda <kenjirofukuda@gmail.com>
+Date: Fri, 25 Oct 2024 12:41:12 +0900
+Subject: [PATCH] collision avoidance
+
+---
+ Source/GNUmakefile | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/Source/GNUmakefile b/Source/GNUmakefile
+index a1d23215..d02867eb 100644
+--- a/Source/GNUmakefile
++++ b/Source/GNUmakefile
+@@ -180,7 +180,6 @@ NSStoryboardSegue.m \
+ NSMagnificationGestureRecognizer.m \
+ NSMatrix.m \
+ NSMenu.m \
+-NSMenu+Me.m \
+ NSMenuToolbarItem.m \
+ NSMenuView.m \
+ NSMenuItem.m \
+@@ -385,6 +384,8 @@ ifneq ($(FOUNDATION_LIB), fd)
+ libgnustep-gui_OBJC_FILES += NSPasteboard.m
+ endif
+ 
++libgnustep-gui_OBJC_FILES += NSMenu+Me.m
++
+ libgnustep-gui_HEADER_FILES_DIR = ../Headers/Additions/GNUstepGUI
+ libgnustep-gui_HEADER_FILES_INSTALL_DIR = /GNUstepGUI
+ 
+@@ -497,7 +498,6 @@ NSMagnificationGestureRecognizer.h \
+ NSMatrix.h \
+ NSMediaLibraryBrowserController.h \
+ NSMenu.h \
+-NSMenu+Me.h \
+ NSMenuItem.h \
+ NSMenuItemCell.h \
+ NSMenuToolbarItem.h \
+@@ -696,6 +696,8 @@ GSXibLoading.h \
+ GSXibKeyedUnarchiver.h \
+ GSHelpAttachment.h
+ 
++APPKIT_HEADERS += NSMenu+Me.h
++
+ libgnustep-gui_HEADER_FILES = ${GUI_HEADERS}
+ 
+ HEADERS_INSTALL = ${APPKIT_HEADERS} \
+-- 
+2.34.1
+

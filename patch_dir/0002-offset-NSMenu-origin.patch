@@ -1,0 +1,26 @@
+From 9a951f5767250b4b4e4f55af016551fa173f4b18 Mon Sep 17 00:00:00 2001
+From: Kenjiro Fukuda <kenjirofukuda@gmail.com>
+Date: Thu, 9 Mar 2023 19:59:38 +0900
+Subject: [PATCH] offset NSMenu origin
+
+---
+ Source/NSMenu.m | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/Source/NSMenu.m b/Source/NSMenu.m
+index f38d650a..9bfce76b 100644
+--- a/Source/NSMenu.m
++++ b/Source/NSMenu.m
+@@ -512,6 +512,9 @@ static BOOL menuBarVisible = YES;
+         {
+           origin = NSMakePoint(0, [[_aWindow screen] visibleFrame].size.height 
+                                - [_aWindow frame].size.height);
++
++	  origin.x += 50;
++	  origin.y -= 50;
+ 	  
+           [_aWindow setFrameOrigin: origin];
+           [_bWindow setFrameOrigin: origin];
+-- 
+2.34.1
+

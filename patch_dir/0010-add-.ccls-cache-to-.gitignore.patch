@@ -1,0 +1,24 @@
+From cf533ff782117213c7be9e25c9cdd20b65735b3e Mon Sep 17 00:00:00 2001
+From: Kenjiro Fukuda <kenjirofukuda@gmail.com>
+Date: Thu, 24 Oct 2024 23:17:49 +0900
+Subject: [PATCH] add .ccls-cache to .gitignore
+
+---
+ .gitignore | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/.gitignore b/.gitignore
+index ccbd3502..11529a1c 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -66,4 +66,5 @@ DerivedData/
+ 
+ compile_commands.json
+ **/.cache
+-**/.vscode
+\ No newline at end of file
++**/.vscode
++**/.ccls-cache
+-- 
+2.34.1
+

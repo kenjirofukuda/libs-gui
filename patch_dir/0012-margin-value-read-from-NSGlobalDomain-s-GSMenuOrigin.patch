@@ -1,0 +1,55 @@
+From 20998af21fe3bc0648e48b86fd4cb030a13fc6dd Mon Sep 17 00:00:00 2001
+From: Kenjiro Fukuda <kenjirofukuda@gmail.com>
+Date: Fri, 25 Oct 2024 13:59:06 +0900
+Subject: [PATCH] margin value read from NSGlobalDomain's
+ GSMenuOriginLeftMargin and GSMenuOriginTopMargin
+
+---
+ Source/NSMenu+Me.m | 30 +++++++++++++++++++++++++++---
+ 1 file changed, 27 insertions(+), 3 deletions(-)
+
+diff --git a/Source/NSMenu+Me.m b/Source/NSMenu+Me.m
+index a21b6bd7..ae8216ce 100644
+--- a/Source/NSMenu+Me.m
++++ b/Source/NSMenu+Me.m
+@@ -1,10 +1,34 @@
+ 
+ #import "AppKit/NSMenu+Me.h"
++#import <Foundation/NSUserDefaults.h>
++#import <Foundation/NSValue.h>
+ 
+-NSPoint KFFixMainMenuInitialOrigin(NSPoint origin)
++CGFloat limitedValue(CGFloat minValue, CGFloat maxValue, CGFloat testValue)
+ {
++  if (testValue < minValue)
++    return minValue;
++  if (testValue > maxValue)
++    return maxValue;
++  return testValue;
++}
++
++NSPoint KFFixMainMenuInitialOrigin(NSPoint origin) {
++  const CGFloat MAX_MARGIN = 200.0f;
+   NSPoint result = origin;
+-  result.x += 50;
+-  result.y -= 50;
++  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
++  NSValue *leftMargin = [defaults objectForKey: @ "GSMenuOriginLeftMargin"];
++  NSValue *topMargin  = [defaults objectForKey: @ "GSMenuOriginTopMargin"];
++  // dirty hook
++  // @see https://oleb.net/blog/2014/02/nsuserdefaults-handling-default-values
++  if (leftMargin == nil)
++    {
++      leftMargin = [NSNumber numberWithShort: 0.0f];
++    }
++  if (topMargin == nil)
++    {
++      topMargin = [NSNumber numberWithShort: 0.0f];
++    }
++  result.x += limitedValue(0, MAX_MARGIN, fabs([((NSNumber *)leftMargin) floatValue]));
++  result.y -= limitedValue(0, MAX_MARGIN, fabs([((NSNumber *)topMargin) floatValue]));
+   return result;
+ }
+-- 
+2.34.1
+

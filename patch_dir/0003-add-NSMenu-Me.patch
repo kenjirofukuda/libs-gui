@@ -1,0 +1,85 @@
+From bfaf5b9e9a8a7142d8ec421bc55f853294a0cec7 Mon Sep 17 00:00:00 2001
+From: Kenjiro Fukuda <kenjirofukuda@gmail.com>
+Date: Sat, 11 Mar 2023 08:13:27 +0900
+Subject: [PATCH] add NSMenu+Me
+
+---
+ Headers/AppKit/NSMenu+Me.h |  4 ++++
+ Source/GNUmakefile         |  2 ++
+ Source/NSMenu+Me.m         | 10 ++++++++++
+ Source/NSMenu.m            |  4 ++--
+ 4 files changed, 18 insertions(+), 2 deletions(-)
+ create mode 100644 Headers/AppKit/NSMenu+Me.h
+ create mode 100644 Source/NSMenu+Me.m
+
+diff --git a/Headers/AppKit/NSMenu+Me.h b/Headers/AppKit/NSMenu+Me.h
+new file mode 100644
+index 00000000..6a32b81f
+--- /dev/null
++++ b/Headers/AppKit/NSMenu+Me.h
+@@ -0,0 +1,4 @@
++// -*- ObjC -*-
++#import <Foundation/NSGeometry.h>
++
++NSPoint KFFixMainMenuInitialOrigin(NSPoint origin);
+diff --git a/Source/GNUmakefile b/Source/GNUmakefile
+index 3bbe4571..9f57fcf1 100644
+--- a/Source/GNUmakefile
++++ b/Source/GNUmakefile
+@@ -179,6 +179,7 @@ NSStoryboardSegue.m \
+ NSMagnificationGestureRecognizer.m \
+ NSMatrix.m \
+ NSMenu.m \
++NSMenu+Me.m \
+ NSMenuView.m \
+ NSMenuItem.m \
+ NSMenuItemCell.m \
+@@ -478,6 +479,7 @@ NSMagnificationGestureRecognizer.h \
+ NSMatrix.h \
+ NSMediaLibraryBrowserController.h \
+ NSMenu.h \
++NSMenu+Me.h \
+ NSMenuItem.h \
+ NSMenuItemCell.h \
+ NSMenuView.h \
+diff --git a/Source/NSMenu+Me.m b/Source/NSMenu+Me.m
+new file mode 100644
+index 00000000..a21b6bd7
+--- /dev/null
++++ b/Source/NSMenu+Me.m
+@@ -0,0 +1,10 @@
++
++#import "AppKit/NSMenu+Me.h"
++
++NSPoint KFFixMainMenuInitialOrigin(NSPoint origin)
++{
++  NSPoint result = origin;
++  result.x += 50;
++  result.y -= 50;
++  return result;
++}
+diff --git a/Source/NSMenu.m b/Source/NSMenu.m
+index 9bfce76b..6c6fc171 100644
+--- a/Source/NSMenu.m
++++ b/Source/NSMenu.m
+@@ -55,6 +55,7 @@
+ #import "AppKit/NSFont.h"
+ #import "AppKit/NSImage.h"
+ #import "AppKit/NSMenu.h"
++#import "AppKit/NSMenu+Me.h"
+ #import "AppKit/NSMenuItem.h"
+ #import "AppKit/NSMenuView.h"
+ #import "AppKit/NSPanel.h"
+@@ -513,8 +514,7 @@ static BOOL menuBarVisible = YES;
+           origin = NSMakePoint(0, [[_aWindow screen] visibleFrame].size.height 
+                                - [_aWindow frame].size.height);
+ 
+-	  origin.x += 50;
+-	  origin.y -= 50;
++          origin = KFFixMainMenuInitialOrigin(origin);
+ 	  
+           [_aWindow setFrameOrigin: origin];
+           [_bWindow setFrameOrigin: origin];
+-- 
+2.34.1
+
